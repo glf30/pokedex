@@ -5,3 +5,147 @@
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
+
+li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: #242424
+}
+
+button {
+    cursor: pointer;
+}
+
+/* NAV */
+
+#landing {
+    background-color: rgb(206, 50, 50);
+}
+
+nav {
+    
+    /* margin: 20px; */
+    margin: 0 auto;
+    padding: 8px 20px;
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    height: 140px;
+}
+
+.poke-logo__wrapper {
+    height: 60px;
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#poke-logo {
+    width: 50px;
+    height: 50px;
+}
+
+.logo__wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.logo__title {
+    font-size: 24px;
+    color: #242424;
+}
+
+.nav__link--list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+.nav__link {
+    margin: 0 12px;
+
+}
+
+.nav__link--anchor {
+    font-size: 20px;
+    font-weight: 500;
+    color: #242424;
+    transition: all 300ms ease;
+}
+
+.nav__link--anchor:hover {
+    color: #fff;
+}
+
+.search__content {
+    padding: 24px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search__title {
+    font-size: 72px;
+    color: #242424;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.search__bar {
+    background-color: #fff;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    border: 2px solid #fff;
+    border-radius: 48px;
+    padding: 24px 16px;
+}
+
+.search__input {
+    width: 100%;
+    padding-right: 32px;
+    font-size: 36px;
+    text-indent: 20px;
+    
+    outline: none;
+
+    border: none;
+    flex-grow: 2;
+    
+}
+
+.search__bar:focus-within {
+    border: 2px solid #242424;
+}
+
+/* .search__input:focus {
+    border: 2px solid #242424;
+} */
+
+.search__icon {
+    margin-right: 24px;
+    width: 50px;
+    height: 50px;
+    transition: all 300ms ease;
+    color: #242424; 
+}
+
+.search__icon:hover {
+    color:rgb(213, 41, 41); 
+}
+
+.search__icon--wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search__icon--wrapper:hover {
+    cursor: pointer;
+}
