@@ -6,7 +6,7 @@ let sortOption = "NUMBER_LOW_TO_HIGH";
 let filterOption = "NONE";
 
 const resultsDisplay = document.querySelector(".results__display");
-const input = document.querySelector('.search__input');
+const input = document.querySelector(".search__input");
 
 let loadPokemonInfo = async (pokemonName) => {
   let responsePokemonInfo = await fetch(
@@ -115,11 +115,11 @@ let sortPokemon = () => {
 
     default:
       searchFilterResults = pokemon;
+      break;
   }
 };
 
 let filterPokemonByType = () => {
-
   switch (filterOption) {
     case "NORMAL":
       searchFilterResults = pokemon.filter((e) => {
@@ -132,7 +132,7 @@ let filterPokemonByType = () => {
 
         return e.types[0].type.name === "normal";
       });
-      console.log(searchFilterResults)
+      console.log(searchFilterResults);
       break;
 
     case "FIRE":
@@ -190,6 +190,17 @@ let filterPokemonByType = () => {
         }
 
         return e.types[0].type.name === "flying";
+      });
+      break;
+    case "ICE":
+      searchFilterResults = pokemon.filter((e) => {
+        if (e.types.length === 2) {
+          return (
+            e.types[0].type.name === "ice" || e.types[1].type.name === "ice"
+          );
+        }
+
+        return e.types[0].type.name === "ice";
       });
       break;
     case "BUG":
@@ -250,6 +261,18 @@ let filterPokemonByType = () => {
         return e.types[0].type.name === "fighting";
       });
       break;
+    case "DRAGON":
+      searchFilterResults = pokemon.filter((e) => {
+        if (e.types.length === 2) {
+          return (
+            e.types[0].type.name === "dragon" ||
+            e.types[1].type.name === "dragon"
+          );
+        }
+
+        return e.types[0].type.name === "dragon";
+      });
+      break;
     case "PSYCHIC":
       searchFilterResults = pokemon.filter((e) => {
         if (e.types.length === 2) {
@@ -266,8 +289,7 @@ let filterPokemonByType = () => {
       searchFilterResults = pokemon.filter((e) => {
         if (e.types.length === 2) {
           return (
-            e.types[0].type.name === "ghost" ||
-            e.types[1].type.name === "ghost"
+            e.types[0].type.name === "ghost" || e.types[1].type.name === "ghost"
           );
         }
 
@@ -278,8 +300,7 @@ let filterPokemonByType = () => {
       searchFilterResults = pokemon.filter((e) => {
         if (e.types.length === 2) {
           return (
-            e.types[0].type.name === "dark" ||
-            e.types[1].type.name === "dark"
+            e.types[0].type.name === "dark" || e.types[1].type.name === "dark"
           );
         }
 
@@ -290,8 +311,7 @@ let filterPokemonByType = () => {
       searchFilterResults = pokemon.filter((e) => {
         if (e.types.length === 2) {
           return (
-            e.types[0].type.name === "steel" ||
-            e.types[1].type.name === "steel"
+            e.types[0].type.name === "steel" || e.types[1].type.name === "steel"
           );
         }
 
@@ -302,8 +322,7 @@ let filterPokemonByType = () => {
       searchFilterResults = pokemon.filter((e) => {
         if (e.types.length === 2) {
           return (
-            e.types[0].type.name === "fairy" ||
-            e.types[1].type.name === "fairy"
+            e.types[0].type.name === "fairy" || e.types[1].type.name === "fairy"
           );
         }
 
@@ -311,43 +330,59 @@ let filterPokemonByType = () => {
       });
       break;
     case "NONE":
-      searchFilterResults = pokemon;
-      break;
     default:
       searchFilterResults = pokemon;
+      break;
   }
-
 };
 
 let searchFilterSort = () => {
+    
   resultsDisplay.innerHTML = "";
   input.value = "";
 
   filterPokemonByType();
   sortPokemon();
-
+console.log(searchFilterResults)
   searchFilterResults.forEach((e) => renderCard(e));
 };
 
 let searchPokemon = () => {
-    resultsDisplay.innerHTML = "";
+  resultsDisplay.innerHTML = "";
 
-    let searchPokemonResult = undefined;
-    if (isNaN(Number(input.value))){
-        //Search by Name
-        searchPokemonResult = pokemon.find(e => e.name === input.value.toLowerCase().trim().replace(' ', '-'));
-        
-    } else if (typeof Number(input.value) === 'number') {
-        //Search by id
-        console.log(input.value)
-        searchPokemonResult = pokemon.find(e => e.id === Number(input.value));  
-    }
+  let searchPokemonResult = undefined;
+  if (isNaN(Number(input.value))) {
+    //Search by Name
+    searchPokemonResult = pokemon.find(
+      (e) => e.name === input.value.toLowerCase().trim().replace(" ", "-")
+    );
+  } else if (typeof Number(input.value) === "number") {
+    //Search by id
+    console.log(input.value);
+    searchPokemonResult = pokemon.find((e) => e.id === Number(input.value));
+  }
 
-    if(searchPokemonResult !== undefined) {
-        renderCard(searchPokemonResult);
-        input.value = "";
-    } else {
-        console.log("NOT FOUND");
-    }
-    
+  if (searchPokemonResult !== undefined) {
+    renderCard(searchPokemonResult);
+    input.value = "";
+  } else {
+    console.log("NOT FOUND");
+  }
+};
+
+let reset = () => {
+  let selectSort = document.querySelector("#sort");
+  let selectFilter = document.querySelector("#filter-type");
+
+  selectSort.value = "NUMBER_LOW_TO_HIGH";
+  selectFilter.value = "NONE";
+  sortOption = "NUMBER_LOW_TO_HIGH";
+  filterOption = "NONE";
+
+  searchFilterSort();
+};
+
+
+let setDarkMode = () => {
+    document.body.classList.toggle('dark-mode');
 }

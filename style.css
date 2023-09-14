@@ -48,6 +48,7 @@ nav {
 #poke-logo {
     width: 50px;
     height: 50px;
+    filter: invert(1);
 }
 
 .logo__wrapper {
@@ -58,6 +59,7 @@ nav {
 .logo__title {
     font-size: 24px;
     color: #242424;
+    filter: invert(1);
 }
 
 .nav__link--list {
@@ -75,6 +77,7 @@ nav {
     font-size: 20px;
     font-weight: 500;
     color: #242424;
+    filter: invert(1);
     transition: all 300ms ease;
 }
 
@@ -94,6 +97,7 @@ nav {
     color: #242424;
     text-align: center;
     margin-bottom: 12px;
+    filter: invert(1);
 }
 
 .search__bar {
@@ -352,3 +356,27 @@ nav {
     background: #EE99AC;
     border: 1px solid #9B6470;
 }
+
+/* DARK MODE */
+.dark-mode #results {
+    background-color: #242424;
+}
+
+.dark-mode #poke-logo,
+.dark-mode a,
+.dark-mode .logo__title,
+.dark-mode .search__title {
+    filter: none;
+}
+
+.dark-mode .results__header--title,
+.dark-mode .sort__header,
+.dark-mode .filter__header--type,
+.dark-mode .pokemon__name--title {
+    color: #242424;
+    filter: invert(1);
+}
+
+/* .dark-mode .pokemon__name--title {
+    filter: invert(1);
+} */
