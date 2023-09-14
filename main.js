@@ -5,8 +5,10 @@ let searchFilterResults = [];
 let sortOption = "NUMBER_LOW_TO_HIGH";
 let filterOption = "NONE";
 
+const resultsHeading = document.querySelector('.results__header--title');
 const resultsDisplay = document.querySelector(".results__display");
 const input = document.querySelector(".search__input");
+
 
 let loadPokemonInfo = async (pokemonName) => {
   let responsePokemonInfo = await fetch(
@@ -57,18 +59,27 @@ let renderCard = async (pokemonInfo) => {
 };
 
 let getPokemon = async () => {
+
   let responsePokemonList = await fetch(
     `https://pokeapi.co/api/v2/pokemon/?limit=1010`
   );
   let dataPokemonList = await responsePokemonList.json();
+
+  
+
+  resultsDisplay.classList.remove('results__loading');
 
   await dataPokemonList.results.forEach(async (e) => {
     let pokemonInfo = await loadPokemonInfo(e.name);
     renderCard(pokemonInfo);
     pokemon.push(pokemonInfo);
   });
+
+  
+
 };
 
+resultsDisplay.classList.add('results__loading');
 getPokemon();
 
 let setSortOption = (event) => {
@@ -132,7 +143,6 @@ let filterPokemonByType = () => {
 
         return e.types[0].type.name === "normal";
       });
-      console.log(searchFilterResults);
       break;
 
     case "FIRE":
@@ -337,18 +347,18 @@ let filterPokemonByType = () => {
 };
 
 let searchFilterSort = () => {
-    
   resultsDisplay.innerHTML = "";
+  resultsHeading.innerText = "Results:";
   input.value = "";
 
   filterPokemonByType();
   sortPokemon();
-console.log(searchFilterResults)
   searchFilterResults.forEach((e) => renderCard(e));
 };
 
 let searchPokemon = () => {
   resultsDisplay.innerHTML = "";
+  resultsHeading.innerText = "Results:";
 
   let searchPokemonResult = undefined;
   if (isNaN(Number(input.value))) {
@@ -358,7 +368,6 @@ let searchPokemon = () => {
     );
   } else if (typeof Number(input.value) === "number") {
     //Search by id
-    console.log(input.value);
     searchPokemonResult = pokemon.find((e) => e.id === Number(input.value));
   }
 
@@ -366,7 +375,7 @@ let searchPokemon = () => {
     renderCard(searchPokemonResult);
     input.value = "";
   } else {
-    console.log("NOT FOUND");
+    resultsHeading.innerText += ` "${input.value}" Not Found`;
   }
 };
 
@@ -382,7 +391,6 @@ let reset = () => {
   searchFilterSort();
 };
 
-
 let setDarkMode = () => {
-    document.body.classList.toggle('dark-mode');
-}
+  document.body.classList.toggle("dark-mode");
+};
