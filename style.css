@@ -462,6 +462,7 @@ nav {
   }
 
   .pokemon {
+    margin: 24px 0;
     width: 100%;
   }
 
@@ -475,5 +476,12 @@ nav {
   h2 {
     font-size: 32px;
     margin: 16px 0;
+  }
+
+  .results__display {
+    margin: 0 auto;
+    padding: 12px;
+    flex-wrap: none;
+    flex-direction: column;
   }
 }
