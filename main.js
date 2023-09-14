@@ -61,7 +61,7 @@ let renderCard = async (pokemonInfo) => {
 let getPokemon = async () => {
 
   let responsePokemonList = await fetch(
-    `https://pokeapi.co/api/v2/pokemon/?limit=1010`
+    `https://pokeapi.co/api/v2/pokemon/?limit=1010`/* current limit before new forms */
   );
   let dataPokemonList = await responsePokemonList.json();
 
