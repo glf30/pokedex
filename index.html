@@ -44,6 +44,45 @@
             <div class="row">
                 <div class="results__header">
                     <h1 class="results__header--title">Results:</h1>
+
+                    <div class="results__header--selections">
+                        <div class="results__header--sort">
+                            <h2 class="sort__header">Sort by:</h2>
+                            <select id="sort" onchange="setSortOption(event)">
+                                <option value="NUMBER_LOW_TO_HIGH" selected>Number - Low to High</option>
+                                <option value="NUMBER_HIGH_TO_LOW">Number - High to Low</option>
+                                <option value="ALPHA_A_TO_Z">Name - A to Z</option>
+                                <option value="ALPHA_Z_TO_A">Name - Z to A</option>
+                            </select>
+                        </div>
+                        <div class="results__header--filter">
+                            <h2 class="filter__header--type">Filter by Type:</h2>
+                            <select id="filter-type" onchange="setFilterOption(event)">
+                                <option value="NONE" selected>None</option>
+                                <option value="NORMAL">Normal</option>
+                                <option value="FIRE">Fire</option>
+                                <option value="WATER">Water</option>
+                                <option value="GRASS">Grass</option>
+                                <option value="FLYING">Flying</option>
+                                <option value="ELECTRIC">Electric</option>
+                                <option value="BUG">Bug</option>
+                                <option value="POISON">Poison</option>
+                                <option value="ICE">Ice</option>
+                                <option value="ROCK">Rock</option>
+                                <option value="GROUND">Ground</option>
+                                <option value="FIGHTING">Fighting</option>
+                                <option value="DRAGON">Dragon</option>
+                                <option value="PSYCHIC">Psychic</option>
+                                <option value="GHOST">Ghost</option>
+                                <option value="DARK">Dark</option>
+                                <option value="STEEL">Steel</option>
+                                <option value="FAIRY">Fairy</option>
+                            </select>
+                        </div>
+                        <button class="results__button--select" onclick="searchFilterSort()">
+                            Go!
+                        </button>
+                    </div>
                 </div>
                 <div class="results__display">
                     
