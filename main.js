@@ -6,6 +6,7 @@ let sortOption = "NUMBER_LOW_TO_HIGH";
 let filterOption = "NONE";
 
 const resultsDisplay = document.querySelector(".results__display");
+const input = document.querySelector('.search__input');
 
 let loadPokemonInfo = async (pokemonName) => {
   let responsePokemonInfo = await fetch(
@@ -320,9 +321,33 @@ let filterPokemonByType = () => {
 
 let searchFilterSort = () => {
   resultsDisplay.innerHTML = "";
+  input.value = "";
 
   filterPokemonByType();
   sortPokemon();
 
   searchFilterResults.forEach((e) => renderCard(e));
 };
+
+let searchPokemon = () => {
+    resultsDisplay.innerHTML = "";
+
+    let searchPokemonResult = undefined;
+    if (isNaN(Number(input.value))){
+        //Search by Name
+        searchPokemonResult = pokemon.find(e => e.name === input.value.toLowerCase().trim().replace(' ', '-'));
+        
+    } else if (typeof Number(input.value) === 'number') {
+        //Search by id
+        console.log(input.value)
+        searchPokemonResult = pokemon.find(e => e.id === Number(input.value));  
+    }
+
+    if(searchPokemonResult !== undefined) {
+        renderCard(searchPokemonResult);
+        input.value = "";
+    } else {
+        console.log("NOT FOUND");
+    }
+    
+}
