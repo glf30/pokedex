@@ -108,7 +108,7 @@ nav {
   align-items: center;
   border: 2px solid #fff;
   border-radius: 48px;
-  padding: 4px;
+  padding: 6px;
   animation: 600ms ease-out 0s 1 slideInFromBottom forwards;
 }
 
@@ -232,7 +232,6 @@ nav {
 .pokemon__img--wrapper {
   width: 200px;
   height: 200px;
-  /* background-color: #d7d7db; */
   border: 1px solid #969393;
   border-radius: 0.5rem;
   display: flex;
@@ -450,7 +449,7 @@ nav {
   }
 
   .search__input {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .search__icon {
