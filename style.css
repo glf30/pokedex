@@ -226,6 +226,7 @@ nav {
   flex-direction: column;
   align-items: center;
   transition: all 300ms ease;
+  animation: 300ms ease-out 0s 1 slideInFromBottom forwards;
 }
 
 .pokemon__img--wrapper {
