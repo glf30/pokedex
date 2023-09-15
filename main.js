@@ -126,9 +126,7 @@ let sortPokemon = () => {
 let typeSelector = (type) => {
   searchFilterResults = pokemon.filter((e) => {
     if (e.types.length === 2) {
-      return (
-        e.types[0].type.name === type || e.types[1].type.name === type
-      );
+      return e.types[0].type.name === type || e.types[1].type.name === type;
     }
 
     return e.types[0].type.name === type;
@@ -136,13 +134,11 @@ let typeSelector = (type) => {
 };
 
 let filterPokemonByType = () => {
-
-    if (filterOption !== "NONE"){
-        typeSelector(filterOption.toLowerCase());
-    } else {
-        searchFilterResults = pokemon;
-    }
-
+  if (filterOption !== "NONE") {
+    typeSelector(filterOption.toLowerCase());
+  } else {
+    searchFilterResults = pokemon;
+  }
 };
 
 let searchFilterSort = () => {
@@ -155,7 +151,9 @@ let searchFilterSort = () => {
   searchFilterResults.forEach((e) => renderCard(e));
 };
 
-let searchPokemon = () => {
+let searchPokemon = (event) => {
+  event.preventDefault();
+
   resultsDisplay.innerHTML = "";
   resultsHeading.innerText = "Results:";
 
@@ -174,6 +172,9 @@ let searchPokemon = () => {
     renderCard(searchPokemonResult);
     input.value = "";
   } else {
+    if (input.value.trim() === ""){
+        input.value = " ";
+    }
     resultsHeading.innerText += ` "${input.value}" Not Found`;
   }
 };
